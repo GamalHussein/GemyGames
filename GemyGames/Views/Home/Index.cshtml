@@ -1,0 +1,48 @@
+﻿@using GemyGames.Settings
+@model IEnumerable<Game>
+
+
+@if(!Model.Any())
+{
+	<div class="alart alart-warning mt-5">
+		<h4>Not Found Game</h4>
+		<p>You Need To Add Game</p>
+
+	</div>
+}
+else
+{
+	<div class="row mt-5">
+	
+		@foreach (var game in Model)
+		{
+
+			<div class="col-lg-4 col-md-6">
+
+				<a class="card border-success text-decoration-none mb-3" asp-controller="Games" asp-action="Details" asp-route-Id="@game.Id">
+					<div class="card-body" style="background-image:url(@($"{ImageSettings.ImagePath}/{game.Cover}"));background-size:cover;background-position:center;height:500px;">
+						<div class=" d-flex align-items-end h-100">
+							<span class="badge bg-secondary rounded-0 fs-3" >@game.categorie.Name</span>
+						</div>
+
+					</div>
+					<div class="card-footer text-muted d-flex justify-content-between align-items-center ">
+						<h5>@game.Name</h5>
+						<div>
+							@foreach(var gameDivece in game.Devices)
+							{
+								<i class="@gameDivece.Device.Icon me-2 fs-2"></i>
+							}
+						</div>
+					</div>
+				</a>
+
+			</div>
+		}
+	</div>
+
+
+}
+
+
+
