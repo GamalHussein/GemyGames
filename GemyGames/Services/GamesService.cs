@@ -80,7 +80,7 @@ namespace GemyGames.Services
             }
             else
             {
-
+                game.Id = model.Id;
                 game.Name = model.Name;
                 game.Discription = model.Discription;
                 game.CategorieId = model.CategoreId;

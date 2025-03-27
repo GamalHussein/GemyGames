@@ -78,12 +78,12 @@ namespace GemyGames.Controllers
             {
                 model.Categories=_categoreService.GetCategories();
                 model.Devices=_diviceServices.GetDivices();
-                return View(model);
+                return View(model); 
             }
 
             var game= await _gamesService.Update(model);
             if(game == null)
-                { return BadRequest(); }
+                { return BadRequest("NotFound"); }
             else
                 return RedirectToAction(nameof(Index));
         }
